@@ -1,4 +1,4 @@
-""" 
+"""
 seed car inventory database
 date: 2026-07/30
 1. name of the car
@@ -16,15 +16,15 @@ Luxury_cars = [
         "car_id": 1322,
         "car_name": "Mercedes-Benz S-Class",
         "car_description": (
-        "The Mercedes-Benz S 580 4MATIC pairs handcrafted luxury with "
-        "effortless V8 performance, all-wheel drive, and flagship technology."
+            "The Mercedes-Benz S 580 4MATIC pairs handcrafted luxury with "
+            "effortless V8 performance, all-wheel drive, and flagship technology."
         ),
         "year": 2024,
         "model": "S 580 4MATIC",
         "price": 128150,
         "availability": True,
-        "imagefile": "img/mercedes-benz-s-class.png"
-    }, 
+        "imagefile": "img/mercedes-benz-s-class.png",
+    },
     {
         "car_id": 2124,
         "car_name": "BMW M4",
@@ -36,7 +36,7 @@ Luxury_cars = [
         "model": "M4 Competition xDrive (G82)",
         "price": 96995,
         "availability": True,
-        "imagefile": "img/bmw-m4-G80.png"
+        "imagefile": "img/Bmw-m4-G80.png",
     },
     {
         "car_id": 3212,
@@ -49,7 +49,7 @@ Luxury_cars = [
         "model": "RS 7 Performance",
         "price": 114000,
         "availability": False,
-        "imagefile": "img/audi-rs7.png"
+        "imagefile": "img/audi-rs7.png",
     },
     {
         "car_id": 1224,
@@ -61,10 +61,9 @@ Luxury_cars = [
         "year": 2025,
         "model": "911 Turbo S",
         "price": 224000,
-   
         "availability": True,
-        "imagefile": "img/porsche-911-turbo-s.png"
-    }, 
+        "imagefile": "img/porsche-911-turbo-s.png",
+    },
     {
         "car_id": 5432,
         "car_name": "Lexus LC 500",
@@ -75,8 +74,8 @@ Luxury_cars = [
         "year": 2026,
         "model": "LC 500",
         "price": 101000,
-        "availability": True,  
-        "imagefile": "img/lexus-lc500.png"
+        "availability": True,
+        "imagefile": "img/lexus-lc500.png",
     },
     {
         "car_id": 6321,
@@ -89,7 +88,7 @@ Luxury_cars = [
         "model": "Range Rover",
         "price": 104000,
         "availability": True,
-        "imagefile": "img/land-rover-range-rover.png"
+        "imagefile": "img/land-rover-range-rover.png",
     },
     {
         "car_id": 7432,
@@ -102,8 +101,8 @@ Luxury_cars = [
         "model": "DB11 V8 Coupe",
         "price": 205000,
         "availability": True,
-        "imagefile": "img/aston-martin-db11.png"
-    }
+        "imagefile": "img/aston-martin-db11.png",
+    },
 ]
 
 
@@ -119,7 +118,7 @@ superCars = [
         "model": "SF90 Stradale",
         "price": 625000,
         "availability": True,
-        "imagefile": "img/ferrari-sf90-stradale-blue-widebody.png"
+        "imagefile": "img/ferrari-sf90-stradale-blue-widebody.png",
     },
     {
         "car_id": 9654,
@@ -132,7 +131,7 @@ superCars = [
         "model": "Aventador SVJ",
         "price": 517770,
         "availability": True,
-        "imagefile": "img/lamborghini-aventador-svj.png"
+        "imagefile": "img/lamborghini-aventador-svj.png",
     },
     {
         "car_id": 1076,
@@ -145,7 +144,7 @@ superCars = [
         "model": "720S",
         "price": 299000,
         "availability": True,
-        "imagefile": "img/mclaren-720s.png"
+        "imagefile": "img/mclaren-720s.png",
     },
     {
         "car_id": 1187,
@@ -158,7 +157,7 @@ superCars = [
         "model": "Chiron",
         "price": 3000000,
         "availability": True,
-        "imagefile": "img/bugatti-chiron.png"
+        "imagefile": "img/bugatti-chiron.png",
     },
     {
         "car_id": 1298,
@@ -171,7 +170,7 @@ superCars = [
         "model": "Jesko Attack",
         "price": 3000000,
         "availability": True,
-        "imagefile": "img/koenigsegg-jesko.png"
+        "imagefile": "img/koenigsegg-jesko.png",
     },
     {
         "car_id": 1309,
@@ -184,7 +183,7 @@ superCars = [
         "model": "Huayra",
         "price": 3000000,
         "availability": True,
-        "imagefile": "img/pagani-huayra.png"
+        "imagefile": "img/pagani-huayra.png",
     },
     {
         "car_id": 1410,
@@ -197,8 +196,8 @@ superCars = [
         "model": "Valkyrie",
         "price": 3000000,
         "availability": True,
-        "imagefile": "img/aston-martin-valkyrie.png"
-    }
+        "imagefile": "img/aston-martin-valkyrie.png",
+    },
 ]
 
 
@@ -214,7 +213,7 @@ sportsCars = [
         "model": "Corvette C8",
         "price": 65000,
         "availability": True,
-        "imagefile": "img/chevrolet-corvette-c8.png"
+        "imagefile": "img/chevrolet-corvette-c8.png",
     },
     {
         "car_id": 1236,
@@ -227,7 +226,7 @@ sportsCars = [
         "model": "911 Carrera",
         "price": 120000,
         "availability": True,
-        "imagefile": "img/porsche-911.png"
+        "imagefile": "img/porsche-911.png",
     },
     {
         "car_id": 1237,
@@ -240,7 +239,7 @@ sportsCars = [
         "model": "GT-R Premium",
         "price": 115000,
         "availability": True,
-        "imagefile": "img/nissan-gt-r.png"
+        "imagefile": "img/nissan-gt-r.png",
     },
     {
         "car_id": 1238,
@@ -253,8 +252,8 @@ sportsCars = [
         "model": "Mustang GT Fastback",
         "price": 55000,
         "availability": True,
-        "imagefile": "img/ford-mustang.png"
-    }
+        "imagefile": "img/ford-mustang.png",
+    },
 ]
 
 
@@ -270,7 +269,7 @@ sedanCars = [
         "model": "Camry XSE",
         "price": 30000,
         "availability": True,
-        "imagefile": "img/toyota-camry.png"
+        "imagefile": "img/toyota-camry.png",
     },
     {
         "car_id": 1302,
@@ -283,8 +282,8 @@ sedanCars = [
         "model": "Accord Touring Hybrid",
         "price": 32000,
         "availability": True,
-        "imagefile": "img/honda-accord.png"
-    }
+        "imagefile": "img/honda-accord.png",
+    },
 ]
 
 
@@ -300,7 +299,7 @@ electricCars = [
         "model": "Model S Dual Motor AWD",
         "price": 90000,
         "availability": True,
-        "imagefile": "img/tesla-model-s.png"
+        "imagefile": "img/tesla-model-s.png",
     }
 ]
 
@@ -316,7 +315,7 @@ hybridCars = [
         "model": "Prius XLE",
         "price": 28000,
         "availability": True,
-        "imagefile": "img/toyota-prius.png"
+        "imagefile": "img/toyota-prius.png",
     },
     {
         "car_id": 1502,
@@ -329,7 +328,7 @@ hybridCars = [
         "model": "Insight Touring",
         "price": 29000,
         "availability": True,
-        "imagefile": "img/honda-insight.png"
+        "imagefile": "img/honda-insight.png",
     },
     {
         "car_id": 1702,
@@ -342,19 +341,19 @@ hybridCars = [
         "model": "Ioniq 5 Limited AWD",
         "price": 48000,
         "availability": True,
-        "imagefile": "img/hyundai-ioniq-5.png"
+        "imagefile": "img/hyundai-ioniq-5.png",
     },
     {
-    "car_id": 1829,
-    "car_name": "kia EV6",
-    "car_description": (
-        "The Kia EV6 is a fully electric crossover that combines sleek design, "
-        "impressive range, and advanced technology for an exhilarating driving experience."
-    ),
-    "year": 2024,
-    "model": "EV6 GT-Line",
-    "price": 45000,
-    "availability": True,
-    "imagefile": "img/kia-ev6.png"
-    }
+        "car_id": 1829,
+        "car_name": "kia EV6",
+        "car_description": (
+            "The Kia EV6 is a fully electric crossover that combines sleek design, "
+            "impressive range, and advanced technology for an exhilarating driving experience."
+        ),
+        "year": 2024,
+        "model": "EV6 GT-Line",
+        "price": 45000,
+        "availability": True,
+        "imagefile": "img/kia-ev6.png",
+    },
 ]
