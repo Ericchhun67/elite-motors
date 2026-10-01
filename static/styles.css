@@ -1,0 +1,51 @@
+.color-filter-btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* 
+aline the first name, last name, email, phone number, resume, and cover letter 
+and submit button
+
+*/
+
+.management-application-form {
+    /* add a border around the form  */
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: auto;
+}
+
+
+.management-application-form input.job-opening{
+    margin-bottom: 10px;
+}
+
+
+.management-application-form select {
+    padding:5px;
+    border-radius: 5px;
+    /* shrink the select box  */
+    width:160px;
+}
+
+.management-application-form button {
+    padding:10px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.management-application-form button:hover {
+    transition: background-color 0.3s;
+    transform: scale(1.05);
+}
+
+

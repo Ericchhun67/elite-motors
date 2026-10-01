@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %} Meet Our Team {% endblock %}
+
+{# css styles file goes here #}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="team-container">
+    <h3>Meet Our Team</h3>
+    <p>Our team is dedicated to providing the best service possible.</p>
+    <p>We are always looking for expanding our team. If you are interested in joining us.
+        <a href="{{ url_for('pages.contact') }}">Contact us</a>
+    </p>
+
+    <style>
+        .team-container {
+            display: flex;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        h3 {
+            margin: 0;
+            text-align: center;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        p {
+            text-align: center;
+            position: relative;
+            top: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+
+    <section class="Management-team">
+        <h2>Management Team</h2>
+        {% for member in ManagementTeam %}
+        <div class="team-member">
+            <p>{{ member.first_name }} {{ member.last_name }}</p>
+
+        </div>
+        {% endfor %}
+    </section>
+
+    <section class="sale_team">
+        <h2>Sales Team</h2>
+        {% for member in SalesTeam %}
+        <div class="team-member">
+            <p>{{ member.first_name }} {{ member.last_name }}</p>
+        </div>
+        {% endfor %}
+    </section>
+</div>
+<style>
+    .team-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        /* center the team members within the container */
+    }
+
+    .team-member {
+        background-color: #f0f0f0;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+    }
+</style>
+
+{% endblock %}

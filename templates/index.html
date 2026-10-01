@@ -1,0 +1,300 @@
+{# Extend the base template for consistent layout across pages #}
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container">
+    <h1 class="title">Grab a vehicle today</h1>
+    <p class="description">Premium selection of luxury and exotic vehicles.
+        Every car meticulously inspected and certified.</p>
+    <!-- Browser inventory button -->
+    <a href="{{ url_for('pages.index') }}"><button class="inventory_btn">Inventory</button></a>
+</div>
+<style>
+    .title {
+        color: rgb(247, 11, 11);
+        /* add a shadow to the title */
+        text-shadow: 30px 30px 30px rgba(226, 13, 13, 0.5);
+    }
+
+    .container {
+        /* load in background image  */
+        background-image: url("{{ url_for('static', filename='img/elite-motors-container-background-v2.png') }}");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-sizing: border-box;
+        min-height: 220px;
+        padding: 40px;
+    }
+
+    .inventory_btn {
+        /* Style the inventory button
+            1. make the button rounded
+            2. add a hover effect
+            3. add a transtion effect to 4 seconds
+            4. add a shadow effect
+        */
+        border-radius: 20px;
+        transition: all 4s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: red;
+    }
+
+    .inventory_btn:hover {
+        background-color: red;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+    }
+
+    .description {
+        color: white;
+        font-size: 18px;
+    }
+</style>
+<section class="inventory-section">
+    <h2 class="Our-inventory">Our Inventory</h2>
+    <p class="inventory-discription">Here you can browse our great selection of cars </p>
+    <div class="search-bar">
+        <input type="text" placeholder="Search for filters">
+        <button type="search-btn">Search</button>
+    </div>
+    <script>
+        // Add functionally for the search bar to search for the car id and car name
+        const searchBtn = document.querySelector('.search-bar button');
+        const searchInput = document.querySelector('.search-bar input');
+
+        searchBtn.addEventListener('click', () => {
+            const query = searchInput.value.toLowerCase();
+            const cars = document.querySelectorAll('.luxury-car .car-item');
+            cars.forEach(car => {
+                const carId = car.dataset.id.toLowerCase();
+                const carName = car.dataset.name.toLowerCase();
+                if (carId.includes(query) || carName.includes(query)) {
+                    car.style.display = 'block';
+                } else {
+                    car.style.display = 'none';
+                }
+            });
+        });
+    </script>
+    <style>
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        /* add a box border for the inventory section */
+        .inventory-section {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <!-- car filters  -->
+    <div class="car-filter">
+        <!-- car filters option section: Luxury Cars, supercars, sportsCars, 
+            sedan cars, electric cars, hybrid cars, 
+            -->
+        <button class="car-filter-btn">Luxury Cars</button>
+        <button class="car-filter-btn">Supercars</button>
+        <button class="car-filter-btn">Sports Cars</button>
+        <button class="car-filter-btn">Sedan Cars</button>
+        <button class="car-filter-btn">Electric Cars</button>
+        <button class="car-filter-btn">Hybrid Cars</button>
+        <button class="car-filter-btn">All Cars</button>
+    </div>
+    <script>
+        // Add functionality for car filter buttons
+        const filterButtons = document.querySelectorAll('.car-filter-btn');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Implement filter logic here
+                alert(`Filter applied: ${button.textContent}`);
+            });
+        });
+        // Add functionality for the "All Cars" button
+        const allCarsButton = document.querySelector('.car-filter-btn:last-child');
+        allCarsButton.addEventListener('click', () => {
+            const allCars = document.querySelectorAll('.car-item');
+            allCars.forEach(car => {
+                car.style.display = 'block';
+            });
+        });
+    </script>
+    <!-- Display luxury-car images from the seed list. -->
+    <div class="luxury-car">
+
+        <h2>Luxury Cars</h2>
+        <!-- luxury color filter section for selecting car colors -->
+        <div class="color-filter">
+            <button class="color-filter-btn" style="background-color: red;"></button>
+            <button class="color-filter-btn" style="background-color: blue;"></button>
+            <button class="color-filter-btn" style="background-color: green;"></button>
+            <button class="color-filter-btn" style="background-color: black;"></button>
+            <button class="color-filter-btn" style="background-color: white;"></button>
+        </div>
+        <script>
+            // Add a click event color filter buttons for when chosing one of the luxury cars
+            const colorFilterButtons = document.querySelectorAll('.color-filter-btn');
+            colorFilterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Implement color filter logic here
+                    alert(`Color filter applied: ${button.style.backgroundColor}`);
+                });
+            });
+            // if one car luxury color filter is applied, only show cars matching that color
+            function filterLuxuryCarsByColor(color) {
+                const luxuryCars = document.querySelectorAll('.luxury-car .car-item');
+                luxuryCars.forEach(car => {
+                    if (car.dataset.color === color) {
+                        car.style.display = 'block';
+                    } else {
+                        car.style.display = 'none';
+                    }
+                });
+            }
+        </script>
+        <!-- Loop through the luxury seed list using Jinja;
+            pass in the luxury_cars variable from the Flask route to display the images here.
+            -->
+        {% for car in luxury_cars %}
+        <div class="car-item" data-id="{{ car.id }}" data-name="{{ car.car_name }}">
+            <!-- Only render an image when its filename is present. -->
+            {% if car.imagefile %}
+            <img src="{{ url_for('static', filename=car.imagefile) }}" alt="{{ car.car_name }}"
+                style="max-width: 100%; height: auto;">
+            {% endif %}
+            <!-- Add the car description for each luxury car -->
+            <p class="car-description">{{ car.car_description }}</p>
+            <!-- Display the car model, price, and year for each luxury car with outshowing the 
+                    car description hidden by default and shown on hover.
+                    -->
+            <div class="car-details">
+                <p class="car_id">car id:{{ car.id }}</p>
+                <p class="car-model">car model:{{ car.model }}</p>
+                <p class="car-price">price:${{ car.price }}</p>
+                <p class="car-year">year:{{ car.year }}</p>
+            </div>
+            <!-- Add a view details button for each luxury car that links to the inventory page -->
+            <a href="{{ url_for('pages.inventory') }}"><button class="view-details-btn">View Details</button></a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="supercars">
+        <h2>Supercars</h2>
+        <!-- filter color buttons for supercars -->
+        <div class="color-filters">
+            <button class="color-filter-btn" style="background-color: red;"></button>
+            <button class="color-filter-btn" style="background-color: blue;"></button>
+            <button class="color-filter-btn" style="background-color: black;"></button>
+            <button class="color-filter-btn" style="background-color: white;"></button>
+        </div>
+        {% for car in super_cars %}
+        <div class="car-item" data-id="{{ car.id }}" data-name="{{ car.car_name }}">
+            {% if car.imagefile %}
+            <img src="{{ url_for('static', filename=car.imagefile) }}" alt="{{ car.car_name }}"
+                style="max-width: 100%; height: auto;">
+            {% endif %}
+            <p class="car-description">{{ car.car_description }}</p>
+            <div class="car-details">
+                <p class="car-model">car model:{{ car.model }}</p>
+                <p class="car-price">price:${{ car.price }}</p>
+                <p class="car-year">year:{{ car.year }}</p>
+            </div>
+            <a href="{{ url_for('pages.inventory') }}"><button class="view-details-btn">View Details</button></a>
+        </div>
+        {% endfor %}
+    </div>
+    <script>
+        // Add a card discription for each luxury car that flips on hover
+        const carItems = document.querySelectorAll('.car-item');
+        carItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const description = item.querySelector('.car-description');
+                if (description) {
+                    description.style.display = 'block';
+                }
+            });
+            item.addEventListener('mouseleave', () => {
+                const description = item.querySelector('.car-description');
+                if (description) {
+                    description.style.display = 'none';
+                }
+            });
+        });
+    </script>
+    <style>
+        .car-model {
+            font-weight: bold;
+            text-transform: capitalize;
+            text-align: center;
+            margin-bottom: 10px;
+
+        }
+
+        .car-description {
+            display: none;
+            /* position: absolute; */
+            /* bottom: 10px;
+            left: 10px; */
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        /* add card for each luxury car */
+        .car-item {
+            position: relative;
+            /* position left */
+            left: 0;
+            /* position the card to the right */
+            display: inline-block;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            /* overflow: hidden; */
+            width: 450px;
+            /* set a fixed width for the car card */
+            height: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.6s;
+            vertical-align: top;
+        }
+
+        .car-item img {
+            /* display: block; */
+            width: 100%;
+            height: auto;
+            /* shrink the image to fit within the card */
+            object-fit: contain;
+            background-color: #f8f8f8;
+            /* add a background color to the image container */
+            padding: 10px;
+            /* add some padding around the image */
+            box-sizing: border-box;
+            /* include padding in the element's total width and height */
+            max-width: 100%;
+
+        }
+
+        /* flip card effect for luxury cars */
+        .car-item:hover {
+            transform: rotateY(360deg);
+            transition: transform 0.6s;
+            /* red background for the back of the card */
+            background-color: red;
+        }
+    </style>
+    </div>
+</section>
+{% endblock %}

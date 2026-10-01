@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+<div class="about-content">
+    <img
+        class="about-hero-image"
+        src="{{ url_for('static', filename='about-page.png') }}"
+        alt="The Elite Motors team standing together in a premium vehicle showroom"
+    >
+    <h1 class="about-us"> About Elite Motors</h1>
+    
+    <p class="about-discription">
+        Elite Motors is dedicated to providing top-quality vehicles and exceptional<br>
+        customer service to ensure a superior car-buying experience for all our clients.
+        Our team is committed to helping you find the perfect vehicle that meets <br>
+        your needs and exceeds your expectations. Cars at Elite Motors are carefully
+        selected to ensure the highest standards of quality and performance.
+    </p>
+</div>
+<style>
+   
+    .about-content p {
+        font-size: 16px;
+        line-height: 1.5;
+        color: black;
+        border-radius: 10px;
+        padding: 20px;
+        background-color:aliceblue; 
+        border: 1px solid #ccc;
+        position: relative;
+        left: 45px;
+        width: 700px;
+    }
+
+    .about-hero-image {
+        display: block;
+        width: calc(100% - 80px);
+        max-width: 3400px;
+        height: auto;
+        max-height: 680px;
+        object-fit: cover;
+        object-position: center;
+        margin: 20px 40px 32px;
+        border-radius: 18px;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+    }
+
+
+    .about-content h1 {
+        font-size: 24px;
+        font-weight: bold;
+        color:black;
+        position: relative; 
+        left: 45px;
+    }
+
+    @media (max-width: 800px) {
+        .about-hero-image {
+            width: calc(100% - 32px);
+            margin: 16px;
+            border-radius: 12px;
+        }
+    }
+</style>
+
+<div class="story-about-us">
+    <h1 class="story-about-us-title"> Our Story</h1>
+    <p class="story-discription">
+    Elite Motors was founded with a passionate for cars. Our mission is to share
+    our love for automobiles with our customers by offering a curated selection 
+    of high-quality vehicles that cater to diverse tastes and individual preferences.
+    <br> we strive to create a welcoming and enjoyable car-buying experience for 
+    every customers that walks through our doors and loves cars as much as we do.
+    </p>
+</div>
+
+<style>
+    .story-about-us p {
+        font-size: 16px;
+        line-height: 1.5;
+        color: black;
+        border-radius: 10px;
+        padding: 20px;
+        background-color:aliceblue; 
+        border: 1px solid #ccc;
+        position: relative;
+        left: 45px;
+        width: 700px;
+    }
+
+    .story-about-us h1 {
+        font-size: 24px;
+        font-weight: bold;
+        color:black;
+        position: relative; 
+        left: 45px;
+    }
+    .team-about-us p {
+        font-size: 16px;
+        line-height: 1.5;
+        color: black;
+        border-radius: 10px;
+        padding: 20px;
+        background-color:aliceblue; 
+        border: 1px solid #ccc;
+        position: relative;
+        left: 45px;
+        width: 700px;
+    }
+
+    .team-about-us h1 {
+        font-size: 24px;
+        font-weight: bold;
+        color:black;
+        position: relative; 
+        left: 45px;
+    }
+</style>
+
+<div class="team-about-us">
+    <h1 class="team-about-us-title"> Our Team</h1>
+    <p class="team-discription">
+    Meet the passionate individuals behind Elite Motors. Our team is dedicated to providing exceptional service and sharing our love for cars with our customers.
+    </p>
+</div>
+{% endblock %}

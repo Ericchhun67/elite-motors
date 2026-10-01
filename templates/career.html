@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="career-page">
+    <h1>Careers at Elite Motors</h1>
+    <p> Join our team and explore exciting career opportunities with Elite Motors.</p>
+
+    <section class="management-applications">
+        <h2>Job Application</h2>
+
+        {% for message in get_flashed_messages(category_filter=['success']) %}
+        <p class="success" role="status">{{ message }}</p>
+        {% endfor %}
+        {% if error %}
+        <p class="error" role="alert">{{ error }}</p>
+        {% endif %}
+
+        {% if available_jobs %}
+        <form class="management-application-form" method="post" action="{{ url_for('pages.careers') }}" enctype="multipart/form-data">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            <label for="jobID">Job opening</label>
+            <select id="jobID" class="job-opening" name="jobID" required>
+                <option value="">Choose an opening</option>
+                {% for job in available_jobs %}
+                <option value="{{ job.jobID }}" {% if form_data.get('jobID') == job.jobID|string %}selected{% endif %}>{{ job.jobTitle }}</option>
+
+
+
+                {% endfor %}
+            </select>
+
+            <div class="application-fields">
+                <label for="first_name">First name</label>
+                <input id="first_name" class="first-name" type="text" name="first_name" maxlength="50" value="{{ form_data.get('first_name', '') }}" required>
+                <label for="last_name">Last name</label>
+                <input id="last_name" class="last-name" type="text" name="last_name" maxlength="50" value="{{ form_data.get('last_name', '') }}" required>
+                <label for="email">Email</label>
+                <input id="email" class="email" type="email" name="email" maxlength="120" value="{{ form_data.get('email', '') }}" required>
+                <label for="phone_number">Phone number</label>
+                <input id="phone_number" class="phone-number" type="tel" name="phone_number" maxlength="20" value="{{ form_data.get('phone_number', '') }}" required>
+                <label for="resume">Résumé (required)</label>
+                <input id="resume" class="resume" type="file" name="resume" accept=".pdf,.doc,.docx" required>
+                <label for="cover_letter">Cover letter (optional)</label>
+                <input id="cover_letter" class="cover-letter" name="cover_letter" type="file"
+                    accept=".pdf,.doc,.docx">
+                <p>PDF, DOC or DOCX. Keep the entire submission under 10 MB.
+                   After an error, please select your files again.</p>
+                <button class="submit-application" type="submit">Submit Application</button>
+            </div>
+        </form>
+        {% endif %}
+    </section>
+
+  
+    
+
+
+</div>
+{% endblock %}

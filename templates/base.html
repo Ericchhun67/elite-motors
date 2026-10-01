@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% block title %}Elite Motors{% endblock %}</title>
+    <!-- add css file using jinja-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    <!-- site header container-->
+    <header class="site-continer">
+        <div class="site-brand">
+            <!-- site logo -->
+
+        </div>
+        <style>
+            .site-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 16px;
+                flex-wrap: wrap;
+                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+                background-color: #0cdf75;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+            }
+
+            .site-brand {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-left: 40px;
+            }
+
+            .header-title {
+                font-size: 24px;
+                text-shadow: 3px 3px 3px rgba(207, 16, 16, 0.5);
+                color: #121212;
+                margin: 0;
+            }
+
+            .logo {
+                width: 50px;
+                height: 50px;
+                object-fit: contain;
+            }
+
+            body {
+                background-color: #f0f5f1;
+                margin: 0;
+                padding-top: 58px;
+            }
+        </style>
+        <!-- site Navigation -->
+        <nav class="nav-bar">
+            <h1 class="header-title"> 🏎️💨 Elite Motors</h1>
+            <img class="menu-logo" src="{{ url_for('static', filename='menu.png') }}" alt="Menu Logo"
+                onclick="toggleNav()">
+            <style>
+                .header-title {
+                    font-size: 24px;
+                    text-shadow: 3px 3px 3px rgba(207, 16, 16, 0.5);
+                    color: #fafbfb;
+                    /* move title next to the nav menu logo right side */
+                    position: absolute;
+                    left: 60px;
+                    top: 8px;
+                }
+
+                .nav-bar {
+                    display: block;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: auto;
+                    background-color: #111112;
+                }
+
+                .menu-logo {
+                    width: 40px;
+                    height: 40px;
+                    cursor: pointer;
+                }
+
+                /* hide/show nav link when click on the menu logo */
+                .nav-links {
+                    display: none;
+                    background-color: #111112;
+                    flex-direction: column;
+                    align-items: center;
+                    position: fixed;
+                    top: 35px;
+                }
+
+                .nav-links.show {
+                    display: flex;
+                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+                }
+
+                .nav-links a {
+                    color: #ffffff;
+                    text-decoration: none;
+                    font-size: 18px;
+                }
+            </style>
+            <div class="nav-links">
+                <!-- get the home page -->
+                <a href="{{ url_for('pages.index') }}">Home</a>
+                <a href="{{ url_for('pages.contact') }}">Contact</a>
+                <a href="{{ url_for('pages.inventory') }}">Inventory</a>
+                <a href="{{ url_for('pages.meet_the_team') }}">Meet the Team</a>
+            </div>
+            <!-- using js to hide/unhide the nav bar -->
+            <script>
+                // Function to hide or show the navigation bar when the menu logo is clicked
+                // it will hide the nav links when the menu logo is clicked and show it again
+                function toggleNav() {
+                    const navLinks = document.querySelector('.nav-links');
+                    navLinks.classList.toggle('show');
+                    // add a transition effect to the nav links when it is shown or hidden
+                    navLinks.style.transition = 'all 0.3s ease-in-out';
+                    // if the nav links are shown, set the display to block, otherwise
+                    // set the display to none and hide the nav links
+                    if (navLinks.classList.contains('show')) {
+                        navLinks.style.display = 'block';
+                    } else {
+                        navLinks.style.display = 'none'; // hide the nav links
+                    }
+                }
+            </script>
+        </nav>
+    </header>
+    {% block content %}{% endblock %}
+    <footer>
+        <p>&copy 2026 Elite Motors</p>
+        <p>Contact with us</p>
+        <a href="{{ url_for('pages.careers') }}"><button class="career_pages">Careers</button></a>
+        <a href="{{ url_for('pages.about' )}}"><button class="about_pages">About</button></a>
+    </footer>
+    <style>
+        footer {
+            /* Style the footer */
+            background-color: #111112;
+            color: white;
+            text-align: center;
+            padding: 5px;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</body>
+</html>
